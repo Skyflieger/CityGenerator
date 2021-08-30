@@ -4,6 +4,7 @@ from PyQt5.QtGui import QImage
 from PyQt5.QtWidgets import QApplication, QFileDialog
 from QtImageViewer import QtImageViewer
 from map import map
+from roads import roads
 from PIL.ImageQt import ImageQt
 
 
@@ -46,7 +47,7 @@ if __name__ == '__main__':
     viewer.canPan = True
     
     # Display the image in the viewer.
-    viewer.setImage(map.generate())
+    viewer.setImage(roads.generate())
     
     # Handle left mouse clicks with your own custom slot
     # handleLeftClick(x, y). (x, y) are image coordinates.

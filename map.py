@@ -1,4 +1,4 @@
-from PIL import Image, ImageTk
+from PIL import Image
 from PyQt5 import QtGui
 import numpy as np
 import random
