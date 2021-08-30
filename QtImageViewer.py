@@ -3,16 +3,9 @@
 """
 
 import os.path
-try:
-    from PyQt5.QtCore import Qt, QRectF, pyqtSignal, QT_VERSION_STR
-    from PyQt5.QtGui import QImage, QPixmap, QPainterPath
-    from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QFileDialog
-except ImportError:
-    try:
-        from PyQt4.QtCore import Qt, QRectF, pyqtSignal, QT_VERSION_STR
-        from PyQt4.QtGui import QGraphicsView, QGraphicsScene, QImage, QPixmap, QPainterPath, QFileDialog
-    except ImportError:
-        raise ImportError("QtImageViewer: Requires PyQt5 or PyQt4.")
+from PyQt5.QtCore import Qt, QRectF, pyqtSignal, QT_VERSION_STR
+from PyQt5.QtGui import QImage, QPixmap, QPainterPath
+from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QFileDialog
 
 
 __author__ = "Marcel Goldschen-Ohm <marcel.goldschen@gmail.com>"
@@ -200,13 +193,7 @@ class QtImageViewer(QGraphicsView):
 
 if __name__ == '__main__':
     import sys
-    try:
-        from PyQt5.QtWidgets import QApplication
-    except ImportError:
-        try:
-            from PyQt4.QtGui import QApplication
-        except ImportError:
-            raise ImportError("QtImageViewer: Requires PyQt5 or PyQt4.")
+    from PyQt5.QtWidgets import QApplication
     print('Using Qt ' + QT_VERSION_STR)
 
     def handleLeftClick(x, y):

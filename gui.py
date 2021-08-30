@@ -47,7 +47,8 @@ if __name__ == '__main__':
     viewer.canPan = True
     
     # Display the image in the viewer.
-    viewer.setImage(roads.generate())
+    
+    viewer.setImage(map.generate(map))
     
     # Handle left mouse clicks with your own custom slot
     # handleLeftClick(x, y). (x, y) are image coordinates.
