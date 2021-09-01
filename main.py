@@ -1,6 +1,6 @@
 from threading import Thread
 import map
-from PIL import Image
+from PIL import Image, ImageTk
 from random import randrange
 import tkinter as tk
 
@@ -20,19 +20,20 @@ def number_list(minimum, maximum, min_distance, max_distance):
     return ran
 
 
+src_image = Image.open('map.png')
+
+
 def map_gen():
-    image = Image.open('map.png')
-    image = image.convert('RGB')
 
     images = []
 
-    thread_count = 100
+    thread_count = 10
 
     threads = []
 
     for i in range(thread_count):
         thread = Thread(target=map.generate, args=(
-            thread_count, i, image, images))
+            thread_count, i, src_image, images))
         threads.append(thread)
         thread.start()
 
@@ -53,20 +54,10 @@ canvas = tk.Canvas(root,
                    height=500)
 canvas.pack()
 
-print(type(canvas))
+image = ImageTk.PhotoImage(src_image)
+imagesprite = canvas.create_image(400, 400, image=image)
 
-
-def add_pixel(x, y):
-    canvas.create_rectangle(x, y, x, y, outline="white")
-
-
-def test():
-    for i in range(500):
-        for j in range(500):
-            print(i, j)
-            add_pixel(i, j)
-
-
-button = tk.Button(root, text="yeet", command=test).pack()
+button = tk.Button(root, text="yeet", command=Thread(target=map_gen).start)
+button.pack()
 
 tk.mainloop()
